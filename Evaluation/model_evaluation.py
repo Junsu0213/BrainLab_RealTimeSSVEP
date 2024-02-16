@@ -39,12 +39,11 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.model_selection import train_test_split
 from mne.decoding import Scaler
 
-from Config.data_config import SSVEPDataConfig
 from Model.Trainer.model_trainer import ModelTrainer
 
 
 class ModelEvaluation(object):
-    def __init__(self, data_config: SSVEPDataConfig):
+    def __init__(self, data_config):
         self.data_config = data_config
         self.sub_num = data_config.sub_num
         self.path = data_config.path
@@ -64,8 +63,10 @@ class ModelEvaluation(object):
         X, y = self.make_dataset(event_id=self.event_id, epoch_data=epoch_data, data_len=self.data_len, sfreq=self.sfreq, norm=self.norm)
 
         # Channel selection (occipital lobe)
-        if self.ch_select:
+        if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
             X = X[:, 6:, :]
+        if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
+            X = X[:, 27:32, :]
 
         # Data split (stratify)
         train_data, test_data, train_label, test_label = train_test_split(
@@ -90,8 +91,10 @@ class ModelEvaluation(object):
         X, y = self.make_dataset(event_id=self.event_id, epoch_data=epoch_data, data_len=self.data_len, sfreq=self.sfreq, norm=self.norm)
 
         # Channel selection (occipital lobe)
-        if self.ch_select:
+        if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
             X = X[:, 6:, :]
+        if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
+            X = X[:, 27:32, :]
 
         # Stratified K fold cross validation
         skf = StratifiedKFold(n_splits=n_splits, random_state=self.random_seed, shuffle=True)
@@ -171,8 +174,10 @@ class ModelEvaluation(object):
                                      sfreq=self.sfreq, norm=self.norm)
 
             # Channel selection (occipital lobe)
-            if self.ch_select:
+            if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
                 X = X[:, 6:, :]
+            if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
+                X = X[:, 27:32, :]
 
             data.append(X)
             label.append(y)

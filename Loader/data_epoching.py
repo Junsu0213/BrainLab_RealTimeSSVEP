@@ -31,13 +31,14 @@ import mne
 from mne.preprocessing import ICA
 import matplotlib.pyplot as plt
 import joblib
-from Config.data_config import SSVEPDataConfig
+from scipy import io
+from Config.data_config import BrainLabSSVEPDataConfig, OpenBMISSVEPDataConfig
 # import matplotlib
 # matplotlib.use('Qt5Agg')
 
 
 class DataEpoching(object):
-    def __init__(self, config: SSVEPDataConfig):
+    def __init__(self, config):
         self.config = config
         self.sub_num = config.sub_num
         self.path = config.path
@@ -47,7 +48,7 @@ class DataEpoching(object):
         self.tri_mapping = config.tri_mapping
         self.event_dict = config.event_dict
 
-    def data_epoch_parser(self, raw_plot=False):
+    def brainlab_data_epoch_parser(self, raw_plot=False):
         # make directory
         try:
             if not os.path.exists(rf'{self.path}\DataBase\Epoch_data'):
@@ -78,7 +79,35 @@ class DataEpoching(object):
         # save epoch data
         joblib.dump(epoch_data, rf'{self.path}\DataBase\Epoch_data\S{self.sub_num}_epoch_data.pkl')
 
+    def openbmi_data_epoch_parser(self, raw_plot=False):
+        # make directory
+        try:
+            if not os.path.exists(rf'{self.path}\DataBase\Epoch_data'):
+                os.mkdir(rf'{self.path}\DataBase\Epoch_data')
+        except OSError:
+            print('Error: Creating directory.')
+
+        # raw data load
+        flist = glob.glob(rf'{self.path}\DataBase\Raw\*{self.sub_num}_EEG_SSVEP.mat')
+
+        epoch_list = []
+        for path in flist:
+            raw = io.loadmat(path)
+            data = raw['EEG_SSVEP_train'][0][0][0].transpose((1, 2, 0))
+            label = raw['EEG_SSVEP_train'][0][0][4][0] - 1
+
+            epochs = self.epoching(data=data, y=label, config=self.config)
+
+            epoch_list.append(epochs)
+
+        # concatenate epoch data
+        epochs_standard = mne.concatenate_epochs(epoch_list)
+
+        # save epoch data
+        joblib.dump(epochs_standard, rf'{self.path}\DataBase\Epoch_data\S{self.sub_num}_epoch_data.pkl')
+
     @staticmethod
+    # Brain Lab dataset Epoching
     def epoch(raw, epoch_len, ch_list, sfreq, tri_list, tri_mapping, event_dict, raw_plot=False):
         # channel length
         ch_len = len(ch_list)
@@ -115,6 +144,23 @@ class DataEpoching(object):
         return epoch
 
     @staticmethod
+    # Open dataset epoching
+    def epoching(data, y, config):
+        events = np.column_stack(
+            (
+                np.arange(0, (len(y)) * data.shape[2], data.shape[2]),
+                np.zeros(len(y), dtype=int),
+                np.array(y)
+            )
+        )
+
+        eeg_info = mne.create_info(ch_names=config.ch_list, ch_types='eeg', sfreq=config.sfreq)
+
+        epoch = mne.EpochsArray(data=data, info=eeg_info, events=events, event_id=config.event_dict)
+
+        return epoch
+
+    @staticmethod
     # epoch trigger list
     def trigger_list(raw):
         trigger = raw[-1, 1:]
@@ -134,10 +180,10 @@ class DataEpoching(object):
 
 if __name__ == "__main__":
 
-    # for i in range(3, 11):
-    #     sub_num = rf'{i:02}'
-    #     config = SSVEPDataConfig(sub_num=sub_num)
-    #     DataEpoching(config=config).data_epoch_parser(raw_plot=False)
+    for i in range(54, 55):
+        sub_num = rf'{i:02}'
+        config = OpenBMISSVEPDataConfig(sub_num=sub_num)
+        DataEpoching(config=config).openbmi_data_epoch_parser(raw_plot=False)
 
-    config = SSVEPDataConfig(sub_num='100')
-    DataEpoching(config=config).data_epoch_parser()
+    # config = SSVEPDataConfig(sub_num='100')
+    # DataEpoching(config=config).data_epoch_parser()

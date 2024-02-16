@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
-from Config.data_config import SSVEPDataConfig
+from Config.data_config import BrainLabSSVEPDataConfig
 from Config.train_config import ModelTrainerConfig
 from Config.model_config import DeepConvNetConfig
 from Model.DeepConvNet.DeepConvNet_model import DeepConvNet
-from Preprocessing.model_evaluation import ModelEvaluation
+from Evaluation.model_evaluation import ModelEvaluation
 from Figure.confusion_matrix import con_mat_plot
 
 sub_list = ['03', '04', '05', '06',
@@ -20,7 +20,7 @@ for i in sub_list:
     n_split = 10
 
     # Dataset Config
-    data_config = SSVEPDataConfig(
+    data_config = BrainLabSSVEPDataConfig(
         sub_num=sub_num,
         data_len=data_length,
         select_label=select_label,

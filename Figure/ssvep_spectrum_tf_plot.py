@@ -6,7 +6,7 @@ import joblib
 import mne
 from scipy.signal import spectrogram
 from mne.channels import make_standard_montage
-from Config.data_config import SSVEPDataConfig
+from Config.data_config import BrainLabSSVEPDataConfig
 
 
 class FigurePlot(object):
@@ -241,7 +241,7 @@ if __name__ == '__main__':
             sub_num = '00'  # all subjects
         else:
             sub_num = rf'{i:02}'
-        config = SSVEPDataConfig(sub_num=sub_num)
+        config = BrainLabSSVEPDataConfig(sub_num=sub_num)
         fig = FigurePlot(config=config)
         fig.ssvep_psd_snr_spectrum(), # fig.ssvep_psd_tf_plot()
 

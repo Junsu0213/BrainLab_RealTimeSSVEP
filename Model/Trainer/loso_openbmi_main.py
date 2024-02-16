@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from Config.data_config import BrainLabSSVEPDataConfig, OpenBMISSVEPDataConfig
+from Config.data_config import OpenBMISSVEPDataConfig
 from Config.train_config import ModelTrainerConfig
 from Config.model_config import DeepConvNetConfig
 from Model.DeepConvNet.DeepConvNet_model import DeepConvNet
@@ -7,15 +7,19 @@ from Evaluation.model_evaluation import ModelEvaluation
 from Figure.confusion_matrix import con_mat_plot
 
 # Subject parameter
-subject_id = ['03', '04', '05', '06',
-              '07', '08', '09', '10']
+subject_id = []
+
+for i in range(1, 55):
+    snum = f'{i:02}'
+    subject_id.append(snum)
+
 sub_num = 'LOSO'
-data_length = 5
+data_length = 4
 select_label = 4
 ch_select = True
 
 # Dataset Config
-data_config = BrainLabSSVEPDataConfig(
+data_config = OpenBMISSVEPDataConfig(
     sub_num=sub_num,
     data_len=data_length,
     select_label=select_label,

@@ -1,13 +1,8 @@
 # -*- coding:utf-8 -*-
-from Config.data_config import SSVEPDataConfig
-from Preprocessing.data_epoching import DataEpoching
-from Model.FBCSP.FBCSP_model import FBCSP
-from Preprocessing.model_evaluation import ModelEvaluation
 import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 import joblib
-import os
 
 sub_num = '09'
 

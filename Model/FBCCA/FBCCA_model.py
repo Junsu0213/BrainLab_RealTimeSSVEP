@@ -10,7 +10,6 @@ from sklearn.cross_decomposition import CCA
 from scipy.stats import pearsonr
 from scipy.signal import butter, lfilter
 from Config.data_config import SSVEPDataConfig
-from Preprocessing.model_evaluation import ModelEvaluation
 import numpy as np
 
 
