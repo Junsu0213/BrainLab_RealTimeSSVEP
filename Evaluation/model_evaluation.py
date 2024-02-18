@@ -63,7 +63,7 @@ class ModelEvaluation(object):
         X, y = self.make_dataset(event_id=self.event_id, epoch_data=epoch_data, data_len=self.data_len, sfreq=self.sfreq, norm=self.norm)
 
         # Channel selection (occipital lobe)
-        if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
+        if self.ch_select is True and self.data_config.__class__.__name__ == 'BrainLabSSVEPDataConfig':
             X = X[:, 6:, :]
         if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
             X = X[:, 27:32, :]
@@ -91,7 +91,7 @@ class ModelEvaluation(object):
         X, y = self.make_dataset(event_id=self.event_id, epoch_data=epoch_data, data_len=self.data_len, sfreq=self.sfreq, norm=self.norm)
 
         # Channel selection (occipital lobe)
-        if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
+        if self.ch_select is True and self.data_config.__class__.__name__ == 'BrainLabSSVEPDataConfig':
             X = X[:, 6:, :]
         if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
             X = X[:, 27:32, :]
@@ -174,7 +174,7 @@ class ModelEvaluation(object):
                                      sfreq=self.sfreq, norm=self.norm)
 
             # Channel selection (occipital lobe)
-            if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
+            if self.ch_select is True and self.data_config.__class__.__name__ == 'BrainLabSSVEPDataConfig':
                 X = X[:, 6:, :]
             if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
                 X = X[:, 27:32, :]
@@ -259,11 +259,12 @@ class ModelEvaluation(object):
         return df, prob_confusion_matrix, total_confusion_matrix
 
     @ staticmethod
-    def make_dataset(event_id, epoch_data, data_len=5, sfreq=125, norm=False):
+    def make_dataset(event_id, epoch_data, data_len, sfreq, norm=False):
         # Make label
         label_num = 0
         y = []
         for event in event_id:
+            epoch_data = epoch_data.resample(sfreq=sfreq)
             data = epoch_data[event].get_data()
             if norm is True:  # RobustScaler: 'median', StandardScaler: 'mean', 1e6: None
                 data = Scaler(info=epoch_data.info, scalings='median').fit_transform(data)

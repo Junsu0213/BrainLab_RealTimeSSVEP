@@ -16,6 +16,7 @@ for i in range(1, 55):
 sub_num = 'LOSO'
 data_length = 4
 select_label = 4
+re_sfreq = 250
 ch_select = True
 
 # Dataset Config
@@ -23,7 +24,8 @@ data_config = OpenBMISSVEPDataConfig(
     sub_num=sub_num,
     data_len=data_length,
     select_label=select_label,
-    ch_select=ch_select
+    ch_select=ch_select,
+    sfreq=re_sfreq
 )
 
 # Model training parameter
