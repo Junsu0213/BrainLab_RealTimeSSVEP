@@ -11,6 +11,7 @@ def con_mat_plot(con_mat, total_trials_mat, model_name, data_config):
     sub_num = data_config.sub_num
     select_class = data_config.select_label
     path = data_config.path
+    data_len = data_config.data_len
 
     disp = ConfusionMatrixDisplay(confusion_matrix=con_mat, display_labels=labels)
     disp.plot(cmap=plt.cm.Blues, colorbar=False)
@@ -29,6 +30,6 @@ def con_mat_plot(con_mat, total_trials_mat, model_name, data_config):
     plt.xticks(fontsize=14)
     plt.legend(fontsize=14)
     # plt.grid(b=None)
-    plt.savefig(rf'{path}/Results/{model_name}/S{sub_num} Confusion matrix ({select_class} class).png', dpi=500)
-    plt.savefig(rf'{path}/Results/{model_name}/S{sub_num} Confusion matrix ({select_class} class).eps', dpi=500, format='eps')
+    plt.savefig(rf'{path}/Results/{model_name}/S{sub_num} Confusion matrix ({select_class} class, {data_len} sec).png', dpi=500)
+    plt.savefig(rf'{path}/Results/{model_name}/S{sub_num} Confusion matrix ({select_class} class, {data_len} sec).eps', dpi=500, format='eps')
     plt.show()

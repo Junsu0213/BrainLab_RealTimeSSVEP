@@ -5,10 +5,10 @@ class ModelTrainerConfig:
     def __init__(
             self,
             lr: float = 0.001,
-            train_batch_size: int = 64,
-            test_batch_size: int = 32,
-            epochs: int = 600,
-            early_stop: int = 500,
+            train_batch_size: int = 128,
+            test_batch_size: int = 64,
+            epochs: int = 50,
+            early_stop: int = 40,
             device: str = 'cuda'
     ):
         self.lr = lr

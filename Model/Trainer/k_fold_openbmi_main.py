@@ -19,11 +19,11 @@ for i in subject_id:
     # Subject parameter
     data_length = 4
     select_label = 4
-    re_sfreq = 250
+    re_sfreq = 125
     ch_select = True
 
     # K-folds cross validation
-    n_split = 10
+    n_split = 5
 
     # Dataset Config
     data_config = OpenBMISSVEPDataConfig(
@@ -31,7 +31,7 @@ for i in subject_id:
         data_len=data_length,
         select_label=select_label,
         ch_select=ch_select,
-        # sfreq=re_sfreq
+        sfreq=re_sfreq
     )
 
     # Model training parameter
