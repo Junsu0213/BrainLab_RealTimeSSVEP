@@ -97,7 +97,7 @@ class DataEpoching(object):
             label = raw['EEG_SSVEP_train'][0][0][4][0] - 1
 
             epochs = self.epoching(data=data, y=label, config=self.config)
-            epochs = epochs.filter(0.5, 50)
+            epochs = epochs.filter(l_freq=.5, h_freq=50)
 
             epoch_list.append(epochs)
 
@@ -119,7 +119,7 @@ class DataEpoching(object):
         # filtering (1~50Hz BPF)
         eeg_info = mne.create_info(ch_names=ch_list, ch_types='eeg', sfreq=sfreq)
         data = mne.io.RawArray(raw, eeg_info)
-        # data.filter(l_freq=5, h_freq=40)
+        data.filter(l_freq=.5, h_freq=50)
         # data.notch_filter(60)
 
         # # independent component analysis (artifact remove)
@@ -180,11 +180,14 @@ class DataEpoching(object):
 
 
 if __name__ == "__main__":
+    # BrainLab dataset epoching
+    for i in range(3, 11):
+        sub_num = rf'{i:02}'
+        config = BrainLabSSVEPDataConfig(sub_num=sub_num)
+        DataEpoching(config=config).brainlab_data_epoch_parser(raw_plot=False)
 
+    # OpenBMI dataset epoching
     for i in range(1, 55):
         sub_num = rf'{i:02}'
         config = OpenBMISSVEPDataConfig(sub_num=sub_num)
         DataEpoching(config=config).openbmi_data_epoch_parser(raw_plot=False)
-
-    # config = SSVEPDataConfig(sub_num='100')
-    # DataEpoching(config=config).data_epoch_parser()

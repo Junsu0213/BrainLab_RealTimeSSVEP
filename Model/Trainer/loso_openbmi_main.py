@@ -50,7 +50,8 @@ for data_len in range(1, 5):
 
     # Results save
     df.to_csv(
-        f'{data_config.path}/Results/{model_config.model_name}/S{data_config.sub_num}_{str(data_config.select_label)}class_{str(data_length)}sec.csv')
+        f'{data_config.path}/Results/{model_config.model_name}/S{data_config.sub_num}_{str(data_config.select_label)}class_{str(data_length)}sec.csv'
+    )
 
     # Confusion matrix save
     con_mat_plot(con_mat=con_mat, total_trials_mat=total_trials_mat, model_name=model_config.model_name,

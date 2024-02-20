@@ -22,7 +22,7 @@ class BrainLabSSVEPDataConfig:
     def __init__(
             self,
             sub_num=None,
-            path=r'A:/BrainLab_RealTimeSSVEP',
+            path=r'D:\DataBase\SSVEP\BrainLab_RealTimeSSVEP',
             epoch_len=5,
             data_len=5,
             sfreq=125,
@@ -34,9 +34,7 @@ class BrainLabSSVEPDataConfig:
             norm=True,
     ):
         if ch_select is True:
-            ch_list = ['P3', 'Pz', 'P4',
-                       'P7', 'PO9', 'O9',
-                       'Iz', 'O10', 'PO10', 'P8']
+            ch_list = ['PO9', 'O9', 'Iz', 'O10', 'PO10']
         else:
             ch_list = ['F3', 'Fz', 'F4',
                        'C3', 'Cz', 'C4',

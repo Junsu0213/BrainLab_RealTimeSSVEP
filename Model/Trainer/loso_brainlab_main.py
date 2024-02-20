@@ -43,7 +43,8 @@ df, con_mat, total_trials_mat = eval.ml_loso(
 
 # Results save
 df.to_csv(
-    f'{data_config.path}/Results/{model_config.model_name}/S{data_config.sub_num}_{str(data_config.select_label)} class.csv')
+    f'{data_config.path}/Results/{model_config.model_name}/S{data_config.sub_num}_{str(data_config.select_label)}class_{str(data_length)}sec.csv'
+)
 
 # Confusion matrix save
 con_mat_plot(con_mat=con_mat, total_trials_mat=total_trials_mat, model_name=model_config.model_name,

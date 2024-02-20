@@ -64,7 +64,7 @@ class ModelEvaluation(object):
 
         # Channel selection (occipital lobe)
         if self.ch_select is True and self.data_config.__class__.__name__ == 'BrainLabSSVEPDataConfig':
-            X = X[:, 6:, :]
+            X = X[:, 10:-1, :]
         if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
             X = X[:, 27:32, :]
 
@@ -92,7 +92,7 @@ class ModelEvaluation(object):
 
         # Channel selection (occipital lobe)
         if self.ch_select is True and self.data_config.__class__.__name__ == 'BrainLabSSVEPDataConfig':
-            X = X[:, 6:, :]
+            X = X[:, 10:-1, :]
         if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
             X = X[:, 27:32, :]
 
@@ -175,7 +175,7 @@ class ModelEvaluation(object):
 
             # Channel selection (occipital lobe)
             if self.ch_select is True and self.data_config.__class__.__name__ == 'BrainLabSSVEPDataConfig':
-                X = X[:, 6:, :]
+                X = X[:, 10:-1, :]
             if self.ch_select is True and self.data_config.__class__.__name__ == 'OpenBMISSVEPDataConfig':
                 X = X[:, 27:32, :]
 
