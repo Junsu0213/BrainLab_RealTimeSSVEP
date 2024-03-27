@@ -19,7 +19,7 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 
 ## 2. Installation
 
-### Environment
+#### Environment
 * Python ==
 * PyTorch ==
 * MNE ==
@@ -29,12 +29,12 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 
 ## 4. Dataset
 
-### Brain Lab. SSVEP dataset
+#### Brain Lab. SSVEP dataset
 * 8 subjects
 * Classes: 5.45 Hz, 6.67 Hz, 8.57 Hz, 12 Hz (4 classes)
 * Total trials: 320 trials (80 trials per target)
 
-### Preprocessing
+#### Preprocessing
 * Sampling rate: 125 Hz
 * Time segment: [-0.5, 5] sec
 * Band-pass filtering: 0.5~50 Hz
