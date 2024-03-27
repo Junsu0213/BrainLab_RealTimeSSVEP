@@ -45,4 +45,4 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 |Models|Sub01|Sub02|Sub03|Sub04|Sub05|Sub06|Sub07|Sub08|Mean|
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |FBCSP|80|74|74|38|46|56|66|50|60.5|
-|DeepConvNet|28|88|43|26|55|33|73|23|40|70|59.9|
+|DeepConvNet|28|88|43|26|55|33|73|23|46.1|
