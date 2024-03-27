@@ -16,3 +16,13 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 > Online experiment results demonstrated the successful operation of wheelchairs and robotic arms using the system, achieving classification accuracies of 100% for the three-class model and 90% for the four-class model.
 > 
 > These results indicate that the AR-based BCI has high potential in the control of wheelchairs and robotic arms, thus contributing significantly to improving the functional independence of patients with physical disabilities in the future.
+
+## 2. Installation
+
+### Environment
+* Python ==
+* PyTorch ==
+* MNE ==
+* CUDA ==
+
+## 3. Directory structure
