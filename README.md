@@ -27,17 +27,45 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 
 ## 3. Directory structure
 ```bash
-├── data
-│   ├── train
-│   ├── test
-│   └── validation
-├── code
-│   ├── train.py
-│   ├── classify.py
-│   ├── model.py
-│   └── dataset.py
-└── run.sh
-``` 
+├── Config
+│   ├── data_config.py
+│   ├── model_config.py
+│   └── train_config.py
+├── Evaluation
+│   └── model_evaluation.py
+├── Figure
+│   ├── confusion_matrix.py
+│   └── ssvep_spectrum_tf.py
+├── Loader
+│   └── data_epoching.py
+├── Model
+│   ├── Base
+│   │   └── Layer.py
+│   ├── DeepConvNet
+│   │   └── DeepConvNet_model.py
+│   ├── EEGNet
+│   │   └── EEGNet_model.py
+│   ├── FBCCA
+│   │   └── FBCCA_model.py
+│   ├── FBCSP
+│   │   └── FBCSP_model.py
+│   ├── Riemann
+│   │   └── riemann_model.py
+│   ├── ShallowConvNet
+│   │   └── ShallowConvNet_model.py
+│   └── Trainer
+|       ├── k_fold_brainlab_main.py
+|       ├── k_fold_openbmi_main.py
+|       ├── loso_brainlab_main.py
+|       ├── loso_openbmi_main.py
+│       └── model_trainer.py
+├── Real_time
+│   ├── SSVEP_data_aqusition.py
+│   ├── classification.py
+│   ├── open_bci.py
+│   └── todo.py
+└── requirements.txt
+```
 
 ## 4. Dataset
 
