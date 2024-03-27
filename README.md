@@ -20,10 +20,9 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 ## 2. Installation
 
 #### Environment
-* Python ==
-* PyTorch ==
-* MNE ==
-* CUDA ==
+* Python == 2.8.2
+* PyTorch == 1.9.1+cu111
+* MNE == 1.3.1
 
 ## 3. Directory structure
 
