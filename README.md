@@ -8,7 +8,7 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 
 </div>
 
-##### DOI: [Integrated Wheelchair and Robotic Arm Control System for Enhancing Functional Independence of the Physically Disabled](https://dcollection.korea.ac.kr/srch/srchDetail/000000278021)
+##### [DOI Link](https://dcollection.korea.ac.kr/srch/srchDetail/000000278021)
 ##### [Youtube Link](https://youtu.be/hDDy_OVMIyI)
 
 ## 1. Abstract
