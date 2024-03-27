@@ -37,5 +37,5 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 ### Preprocessing
 * Sampling rate: 125 Hz
 * Time segment: [-0.5, 5] sec
-* Band-pass filtering: 0.5~40 Hz
-* Normalization: MinMax
+* Band-pass filtering: 0.5~50 Hz
+* Normalization: RobustScaler
