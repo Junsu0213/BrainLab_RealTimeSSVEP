@@ -1,1 +1,2 @@
-# integrated wheelchair and robotic arm control system for enhancing functional independence of the physically disabled
+# Integrated Wheelchair and Robotic Arm Control System for Enhancing Functional Independence of the Physically Disabled
+
