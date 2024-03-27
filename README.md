@@ -8,8 +8,7 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 
 </div>
 
-##### [DOI Link](https://dcollection.korea.ac.kr/srch/srchDetail/000000278021)
-##### [Youtube Link](https://youtu.be/hDDy_OVMIyI)
+##### [DOI Link](https://dcollection.korea.ac.kr/srch/srchDetail/000000278021), [Youtube Link](https://youtu.be/hDDy_OVMIyI)
 
 ## 1. Abstract
 > Recent advances in biosignal processing and robotics have enabled the operation of wheelchairs and robotic arms using electroencephalography (EEG) through brain-computer interfaces (BCI). However, most BCI studies rely on monitor screens, potentially limiting usability. To address these issues, this study integrates augmented reality (AR), eye tracking, spatial mapping, and object detection technologies to develop and implement a wheelchair and robotic arm integrated operation system that utilizes steady-state visual evoked potential (SSVEP), a major area of research in BCI. The system uses HoloLens 2 to induce SSVEP in an AR environment, which has the advantage of allowing users to operate the device more intuitively without the need to switch their gaze.
