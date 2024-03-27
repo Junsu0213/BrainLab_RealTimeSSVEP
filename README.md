@@ -26,6 +26,18 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 * brainflow == 5.6.1
 
 ## 3. Directory structure
+```bash
+├── data
+│   ├── train
+│   ├── test
+│   └── validation
+├── code
+│   ├── train.py
+│   ├── classify.py
+│   ├── model.py
+│   └── dataset.py
+└── run.sh
+``` 
 
 ## 4. Dataset
 
