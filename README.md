@@ -56,10 +56,10 @@ Flow chart of the proposed AR-based BCI-SSVEP integrated system for wheelchair a
 │   ├── ShallowConvNet
 │   │   └── ShallowConvNet_model.py
 │   └── Trainer
-|       ├── k_fold_brainlab_main.py
-|       ├── k_fold_openbmi_main.py
-|       ├── loso_brainlab_main.py
-|       ├── loso_openbmi_main.py
+│       ├── k_fold_brainlab_main.py
+│       ├── k_fold_openbmi_main.py
+│       ├── loso_brainlab_main.py
+│       ├── loso_openbmi_main.py
 │       └── model_trainer.py
 ├── Real_time
 │   ├── SSVEP_data_aqusition.py
